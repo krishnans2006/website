@@ -1,0 +1,105 @@
+{% extends "base.html" %}
+{% block title %}Krishnan Shankar - Text Resume{% endblock title %}
+{% block content %}
+<h1 id="about-me">About Me</h1>
+<p>Hello! I&#39;m Krishnan Shankar, a Freshman attending Thomas Jefferson High School for Science and Technology.</p>
+
+<h2 id="links">Links</h2>
+<ul>
+    <li><a href="https://user.tjhsst.edu/">Website</a></li>
+    <li><a href="https://www.github.com/KrishnanS2006/">Github</a></li>
+    <li><a href="https://www.devpost.com/KrishnanS2006/">Devpost</a></li>
+</ul>
+
+<h2 id="contact">Contact</h2>
+<ul>
+    <li><a href="mailto:krishnans2006@gmail.com">Email/Hangouts</a></li>
+    <li>Discord - Email me!</li>
+</ul>
+
+<h2 id="education">Education</h2>
+<ul>
+    <li><a href="https://drew.apsva.us/">Drew Model Elementary School</a> - Grades 1 to 5</li>
+    <li><a href="https://jefferson.apsva.us/">Thomas Jefferson Middle School</a> - Grade 6</li>
+    <li><a href="https://longfellowms.fcps.edu/">Longfellow Middle School</a> - Grades 7 &amp; 8</li>
+    <li><a href="https://tjhsst.fcps.edu/">Thomas Jefferson High School (for Science and Technology)</a> - Grades 9 to Present</li>
+</ul>
+
+<h2 id="talents">Talents</h2>
+<ul>
+    <li>Python</li>
+    <ul>
+        <li>Pure Python</li>
+        <ul>
+            <li>Loops</li>
+            <li>Functions</li>
+            <li>Classes/Inheritance</li>
+            <li>Decorators</li>
+        </ul>
+        <li>Pygame</li>
+        <li>Flask</li>
+    </ul>
+    <li>Java</li>
+    <ul>
+        <li>Loops</li>
+        <li>Functions</li>
+        <li>Classes/Inheritance</li>
+    </ul>
+    <li>C/C++/C#</li>
+    <ul>
+        <li>Basic variables, loops, functions</li>
+    </ul>
+    <li>SQL</li>
+    <ul>
+        <li>Queries</li>
+        <li>Create Tables</li>
+        <li>Update/Insert Into Tables</li>
+        <li>Delete/Truncate Tables</li>
+        <li>SQL Integration to Python</li>
+    </ul>
+</ul>
+
+<h2 id="projects-newest-to-oldest-">Projects (Newest to Oldest)</h2>
+<ul>
+    {% for project in projects %}
+    <li>
+        <p style="display: inline;">{{project[1]}} - {{project[0]["Description"]}}</p>
+        {% if project[0].get("Pinned") %}
+        <h6 style="display: inline;">&emsp;<i class="fas fa-thumbtack"></i>&thinsp;Pinned!</h6>
+        {% endif %}
+        {% if project[0].get("Winner") %}
+        <h6 style="display: inline;">&emsp;<i class="fas fa-trophy"></i>&thinsp;Winner!</h6>
+        {% endif %}
+        <ul><li>
+        {% for name, link in project[0]["Links"].items() %}
+            {% if name == "GitHub" %}
+            <a href="{{link}}" class="btn btn-primary" target="_blank"><i class="fab fa-github"></i>&thinsp;{{name}}</a>
+            {% elif name == "Link" %}
+            <a href="{{link}}" class="btn btn-primary" target="_blank"><i class="fas fa-link"></i>&thinsp;{{name}}</a>
+            {% elif name == "Devpost" or name == "CodeDay Showcase" %}
+            <a href="{{link}}" class="btn btn-primary" target="_blank"><i class="far fa-eye"></i>&thinsp;{{name}}</a>
+            {% elif name == "Server" %}
+            <a href="{{link}}" class="btn btn-primary" target="_blank"><i class="fas fa-server"></i>&thinsp;{{name}}</a>
+            {% elif name == "Invite" %}
+            <a href="{{link}}" class="btn btn-primary" target="_blank"><i class="fas fa-user-plus"></i>&thinsp;{{name}}</a>
+            {% else %}
+            <a href="{{link}}" class="btn btn-primary" target="_blank">{{name}}</a>
+            {% endif %}
+        {% endfor %}
+        </li></ul>
+    </li>
+    {% endfor %}
+    <li>View the rest on 
+    <a class="btn btn-primary" href="https://www.github.com/KrishnanS2006/">Github</a>, 
+    <a class="btn btn-primary" href="https://user.tjhsst.edu/portfolio">My Website Portfolio</a>,
+    or <a class="btn btn-primary" href="https://www.devpost.com/KrishnanS2006">Devpost</a>.</li>
+</ul>
+<!--
+## Accomplishments (Newest to Oldest)
+ - TJ Dev Club: Advanced Contest 1st Place
+ - NHacks 2020: Honorable Mention for 
+
+## Non-Coding Accomplishments (Newest to Oldest)
+ - 
+-->
+{% endblock content %}
