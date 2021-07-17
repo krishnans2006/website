@@ -1,103 +1,127 @@
 {% extends "base.html" %}
 {% block title %}Portfolio - Krishnan Shankar{% endblock title %}
 {% block content %}
-<h1>Recent Projects</h1>
-<h3>From Newest to Oldest</h3>
-<br>
-<div id="masonrybs" class="row row-cols-1 row-cols-md-3 g-4" data-masonry='{"percentPosition": true }'>
-    {% for project in projects %}
-    <div class="col acc-p">
-        <div class="card" data-bs-toggle="modal" 
-                data-bs-target="#project-modal-{{project[1].replace(' ', '-').replace(':', '_')}}"
-                data-bs-project="{{project[1]}}">
-            <div class="card-body">
-                <h5 class="card-title" style="display: inline;">{{project[1]}}</h5>
-                {% if "Winner" in project[0].get("Tags") %}
-                <h6 class="card-subtitle mb-2" style="display: inline; color: gold;">&ensp;<i class="fas fa-trophy"Pin></i>&thinsp;Winner!</h6>
-                {% endif %}
-                {% if "Pinned" in project[0].get("Tags") %}
-                <h6 class="card-subtitle mb-2 text-muted" style="display: inline;">&ensp;<i class="fas fa-thumbtack"></i></h6>
-                {% endif %}
-                {% if "Hackathon" in project[0].get("Tags") %}
-                <h6 class="card-subtitle mb-2 text-muted" style="display: inline;">&ensp;<i class="fas fa-code"></i></h6>
-                {% endif %}
-                {% if "Website" in project[0].get("Tags") %}
-                <h6 class="card-subtitle mb-2 text-muted" style="display: inline;">&ensp;<i class="fas fa-window-maximize"></i></h6>
-                {% endif %}
-                {% if "Discord Bot" in project[0].get("Tags") %}
-                <h6 class="card-subtitle mb-2 text-muted" style="display: inline;">&ensp;<i class="fas fa-robot"></i></h6>
-                {% endif %}
-                {% if "Game" in project[0].get("Tags") %}
-                <h6 class="card-subtitle mb-2 text-muted" style="display: inline;">&ensp;<i class="fas fa-gamepad"></i></h6>
-                {% endif %}
-                {% if "Browser Extension" in project[0].get("Tags") %}
-                <h6 class="card-subtitle mb-2 text-muted" style="display: inline;">&ensp;<i class="fas fa-puzzle-piece"></i></h6>
-                {% endif %}
-                <p class="card-text">{{project[0]["Description"]}}</p>
-                <h6 class="card-subtitle mb-2 text-muted"><i class="fas fa-expand-arrows-alt"></i>&thinsp;Click Card to Expand!</h6>
+    <h1>My Projects</h1>
+    <h3>From Newest to Oldest</h3>
+    <br>
+    <div id="masonrybs" class="row row-cols-1 row-cols-md-3 g-4" data-masonry='{"percentPosition": true }'>
+        {% for project in projects %}
+            <div class="col acc-p">
+                <div class="card" data-bs-toggle="modal"
+                     data-bs-target="#project-modal-{{ project[1].replace(' ', '-').replace(':', '_') }}"
+                     data-bs-project="{{ project[1] }}">
+                    <div class="card-body">
+                        {% if "Winner" in project[0].get("Tags") %}
+                            <h5 class="card-title"><i class="fas fa-trophy"
+                                                      style="color: gold;"></i>&ensp;{{ project[1] }}</h5>
+                        {% else %}
+                            <h5 class="card-title">{{ project[1] }}</h5>
+                        {% endif %}
+                        <p class="card-text">{{ project[0]["Description"] }}</p>
+                        {% if "Website" in project[0].get("Tags") %}
+                            <h6 class="card-subtitle mb-2 text-muted" style="display: inline;"><i
+                                    class="fas fa-window-maximize"></i>&ensp;</h6>
+                        {% endif %}
+                        {% if "Discord Bot" in project[0].get("Tags") %}
+                            <h6 class="card-subtitle mb-2 text-muted" style="display: inline;"><i
+                                    class="fas fa-robot"></i>&ensp;</h6>
+                        {% endif %}
+                        {% if "Game" in project[0].get("Tags") %}
+                            <h6 class="card-subtitle mb-2 text-muted" style="display: inline;"><i
+                                    class="fas fa-gamepad"></i>&ensp;</h6>
+                        {% endif %}
+                        {% if "Browser Extension" in project[0].get("Tags") %}
+                            <h6 class="card-subtitle mb-2 text-muted" style="display: inline;"><i
+                                    class="fas fa-puzzle-piece"></i>&ensp;</h6>
+                        {% endif %}
+                        {% if "Hackathon" in project[0].get("Tags") %}
+                            <h6 class="card-subtitle mb-2 text-muted"
+                                style="display: inline; position: absolute; right: 15px; bottom: 10px;"><i
+                                    class="fas fa-code"></i>&ensp;</h6>
+                        {% endif %}
+                        {% if "Pinned" in project[0].get("Tags") %}
+                            <h6 class="card-subtitle mb-2 text-muted"
+                                style="display: inline; position: absolute; right: 15px; top: 20px;"><i
+                                    class="fas fa-thumbtack"></i>&ensp;</h6>
+                        {% endif %}
+                        <h6 class="card-subtitle mb-2 text-muted" style="position: absolute; margin-left: auto; margin-right: auto; left: 0; right: 0; bottom: 10px; text-align: center;"><i class="fas fa-expand-arrows-alt"></i>&thinsp;Click
+                            Card to Expand!</h6>
+                    </div>
+                </div>
             </div>
-        </div>
+        {% endfor %}
     </div>
-    {% endfor %}
-</div>
 {% endblock content %}
 
 {% block outer %}
-{% for project in projects %}
-<div class="modal fade" id="project-modal-{{project[1].replace(' ', '-').replace(':', '_')}}" tabindex="-1" aria-labelledby="project-modal-label" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="project-modal-label">{{project[1]}}</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                {% if project[0].get("Image") %}
-                    <img class="img-thumbnail" src="{{project[0]['Image']}}" style="width: 100%;">
-                {% endif %}
-                <p>{{project[0]["Description"]}}</p>
-                <h6 class="card-subtitle mb-2" style="display: inline;">Tags:</h6>
-                {% if "Winner" in project[0].get("Tags") %}
-                <h6 class="card-subtitle mb-2" style="display: inline; color: gold;">&emsp;<i class="fas fa-trophy" style="color: gold;"></i>&thinsp;Winner!</h6>
-                {% endif %}
-                {% if "Pinned" in project[0].get("Tags") %}
-                <h6 class="card-subtitle mb-2 text-muted" style="display: inline;">&emsp;<i class="fas fa-thumbtack"></i>&thinsp;Pinned!</h6>
-                {% endif %}
-                {% if "Hackathon" in project[0].get("Tags") %}
-                <h6 class="card-subtitle mb-2 text-muted" style="display: inline;">&emsp;<i class="fas fa-code"></i>&thinsp;Hackathon</h6>
-                {% endif %}
-                {% if "Website" in project[0].get("Tags") %}
-                <h6 class="card-subtitle mb-2 text-muted" style="display: inline;">&emsp;<i class="fas fa-window-maximize"></i>&thinsp;Website</h6>
-                {% endif %}
-                {% if "Discord Bot" in project[0].get("Tags") %}
-                <h6 class="card-subtitle mb-2 text-muted" style="display: inline;">&emsp;<i class="fas fa-robot"></i>&thinsp;Discord Bot</h6>
-                {% endif %}
-                {% if "Game" in project[0].get("Tags") %}
-                <h6 class="card-subtitle mb-2 text-muted" style="display: inline;">&emsp;<i class="fas fa-gamepad"></i>&thinsp;Game</h6>
-                {% endif %}
-                {% if "Browser Extension" in project[0].get("Tags") %}
-                <h6 class="card-subtitle mb-2 text-muted" style="display: inline;">&ensp;<i class="fas fa-puzzle-piece"></i>&thinsp;Browser Extension</h6>
-                {% endif %}
-            </div>
-            <div class="modal-footer">
-                {% for name, link in project[0]["Links"].items() %}
-                    {% if name == "GitHub" %}
-                    <a href="{{link}}" class="btn btn-primary" target="_blank"><i class="fab fa-github"></i>&thinsp;{{name}}</a>
-                    {% elif name == "Link" %}
-                    <a href="{{link}}" class="btn btn-primary" target="_blank"><i class="fas fa-link"></i>&thinsp;{{name}}</a>
-                    {% elif name == "Devpost" or name == "CodeDay Showcase" %}
-                    <a href="{{link}}" class="btn btn-primary" target="_blank"><i class="far fa-eye"></i>&thinsp;{{name}}</a>
-                    {% elif name == "Server" %}
-                    <a href="{{link}}" class="btn btn-primary" target="_blank"><i class="fas fa-server"></i>&thinsp;{{name}}</a>
-                    {% elif name == "Invite" %}
-                    <a href="{{link}}" class="btn btn-primary" target="_blank"><i class="fas fa-user-plus"></i>&thinsp;{{name}}</a>
-                    {% else %}
-                    <a href="{{link}}" class="btn btn-primary" target="_blank">{{name}}</a>
-                    {% endif %}
-                {% endfor %}
+    {% for project in projects %}
+        <div class="modal fade" id="project-modal-{{ project[1].replace(' ', '-').replace(':', '_') }}" tabindex="-1"
+             aria-labelledby="project-modal-label" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="project-modal-label">{{ project[1] }}</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        {% if project[0].get("Image") %}
+                            <img class="img-thumbnail" src="{{ project[0]['Image'] }}" style="width: 100%;">
+                        {% endif %}
+                        <p>{{ project[0]["Description"] }}</p>
+                        <h6 class="card-subtitle mb-2" style="display: inline;">Tags:</h6>
+                        {% if "Winner" in project[0].get("Tags") %}
+                            <h6 class="card-subtitle mb-2" style="display: inline; color: gold;">&emsp;<i
+                                    class="fas fa-trophy" style="color: gold;"></i>&thinsp;Winner!</h6>
+                        {% endif %}
+                        {% if "Pinned" in project[0].get("Tags") %}
+                            <h6 class="card-subtitle mb-2 text-muted" style="display: inline;">&emsp;<i
+                                    class="fas fa-thumbtack"></i>&thinsp;Pinned!</h6>
+                        {% endif %}
+                        {% if "Hackathon" in project[0].get("Tags") %}
+                            <h6 class="card-subtitle mb-2 text-muted" style="display: inline;">&emsp;<i
+                                    class="fas fa-code"></i>&thinsp;Hackathon</h6>
+                        {% endif %}
+                        {% if "Website" in project[0].get("Tags") %}
+                            <h6 class="card-subtitle mb-2 text-muted" style="display: inline;">&emsp;<i
+                                    class="fas fa-window-maximize"></i>&thinsp;Website</h6>
+                        {% endif %}
+                        {% if "Discord Bot" in project[0].get("Tags") %}
+                            <h6 class="card-subtitle mb-2 text-muted" style="display: inline;">&emsp;<i
+                                    class="fas fa-robot"></i>&thinsp;Discord Bot</h6>
+                        {% endif %}
+                        {% if "Game" in project[0].get("Tags") %}
+                            <h6 class="card-subtitle mb-2 text-muted" style="display: inline;">&emsp;<i
+                                    class="fas fa-gamepad"></i>&thinsp;Game</h6>
+                        {% endif %}
+                        {% if "Browser Extension" in project[0].get("Tags") %}
+                            <h6 class="card-subtitle mb-2 text-muted" style="display: inline;">&ensp;<i
+                                    class="fas fa-puzzle-piece"></i>&thinsp;Browser Extension</h6>
+                        {% endif %}
+                    </div>
+                    <div class="modal-footer">
+                        {% for name, link in project[0]["Links"].items() %}
+                            {% if name == "GitHub" %}
+                                <a href="{{ link }}" class="btn btn-primary" target="_blank"><i
+                                        class="fab fa-github"></i>&thinsp;{{ name }}</a>
+                            {% elif name == "Link" %}
+                                <a href="{{ link }}" class="btn btn-primary" target="_blank"><i class="fas fa-link"></i>&thinsp;{{ name }}
+                                </a>
+                            {% elif name == "Devpost" or name == "CodeDay Showcase" %}
+                                <a href="{{ link }}" class="btn btn-primary" target="_blank"><i class="far fa-eye"></i>&thinsp;{{ name }}
+                                </a>
+                            {% elif name == "Server" %}
+                                <a href="{{ link }}" class="btn btn-primary" target="_blank"><i
+                                        class="fas fa-server"></i>&thinsp;{{ name }}</a>
+                            {% elif name == "Invite" %}
+                                <a href="{{ link }}" class="btn btn-primary" target="_blank"><i
+                                        class="fas fa-user-plus"></i>&thinsp;{{ name }}</a>
+                            {% else %}
+                                <a href="{{ link }}" class="btn btn-primary" target="_blank">{{ name }}</a>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-</div>
-{% endfor %}
+    {% endfor %}
 {% endblock outer %}
