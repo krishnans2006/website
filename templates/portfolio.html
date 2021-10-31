@@ -4,7 +4,17 @@
     <h1>My Projects</h1>
     <h3>From Newest to Oldest</h3>
     <br>
-    <div id="masonrybs" class="row row-cols-1 row-cols-md-3 g-4" data-masonry='{"percentPosition": true }'>
+    <div id="masonrybs" class="row row-cols-1 row-cols-xl-3 row-cols-md-2 g-4" data-masonry='{"percentPosition": true }'>
+        <div class="col acc-p">
+            <div class="card no-hover"
+                 style="height: 336px; display: flex; align-items: center; justify-content: center;">
+                <div class="badge-base LI-profile-badge" data-locale="en_US" data-size="large" data-theme="light"
+                     data-type="HORIZONTAL" data-vanity="krishnan-shankar" data-version="v1"><a
+                        class="badge-base__link LI-simple-link"
+                        href="https://www.linkedin.com/in/krishnan-shankar?trk=profile-badge"></a>
+                </div>
+            </div>
+        </div>
         {% for project in projects %}
             <div class="col acc-p">
                 <div class="card" data-bs-toggle="modal"
@@ -44,7 +54,9 @@
                                 style="display: inline; position: absolute; right: 15px; top: 20px;"><i
                                     class="fas fa-thumbtack"></i>&ensp;</h6>
                         {% endif %}
-                        <h6 class="card-subtitle mb-2 text-muted" style="position: absolute; margin-left: auto; margin-right: auto; left: 0; right: 0; bottom: 10px; text-align: center;"><i class="fas fa-expand-arrows-alt"></i>&thinsp;Click
+                        <h6 class="card-subtitle mb-2 text-muted"
+                            style="position: absolute; margin-left: auto; margin-right: auto; left: 0; right: 0; bottom: 10px; text-align: center;">
+                            <i class="fas fa-expand-arrows-alt"></i>&thinsp;Click
                             Card to Expand!</h6>
                     </div>
                 </div>
