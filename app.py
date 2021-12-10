@@ -10,6 +10,11 @@ def index():
     return redirect("/portfolio")
 
 
+@app.route("/linkedin")
+def linkedin():
+    return render_template("linkedin.html")
+
+
 @app.route("/portfolio")
 def portfolio():
     return render_template("portfolio.html", projects=[[p.to_dict(), p.id] for p in get_projects()], desc="Test!")
