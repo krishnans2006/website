@@ -22,7 +22,7 @@ def portfolio():
 
 @app.route("/resume")
 def resume():
-    return send_file("Resume.pdf", as_attachment=True)
+    return send_file("Resume-Krishnan-Shankar.pdf", attachment_filename="Krishnan-Shankar.pdf")
 
 
 @app.errorhandler(404)
