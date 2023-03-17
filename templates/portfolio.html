@@ -8,7 +8,7 @@
         <div class="col acc-p">
             <div class="card no-hover"
                  style="height: 336px; display: flex; align-items: center; justify-content: center;">
-                <iframe src="/linkedin" title="LinkedIn Profile Badge" style="height: 355px; width: 350px;"></iframe>
+                <iframe src="{{ url_for('linkedin') }}" title="LinkedIn Profile Badge" style="height: 355px; width: 350px;"></iframe>
             </div>
         </div>
         {% for project in projects %}

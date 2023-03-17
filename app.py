@@ -6,21 +6,25 @@ app = Flask(__name__)
 
 
 @app.route("/")
+@app.route("/2024kshankar/")
 def index():
-    return redirect("/portfolio")
+    return redirect(url_for("portfolio"))
 
 
-@app.route("/linkedin")
+@app.route("/linkedin/")
+@app.route("/2024kshankar/linkedin/")
 def linkedin():
     return render_template("linkedin.html")
 
 
-@app.route("/portfolio")
+@app.route("/portfolio/")
+@app.route("/2024kshankar/portfolio/")
 def portfolio():
     return render_template("portfolio.html", projects=[[p.to_dict(), p.id] for p in get_projects()], desc="Test!")
 
 
-@app.route("/resume")
+@app.route("/resume/")
+@app.route("/2024kshankar/resume/")
 def resume():
     return send_file("static/resumes/Resume-Krishnan-Shankar.pdf", attachment_filename="Krishnan-Shankar.pdf")
 
@@ -36,4 +40,4 @@ def error500(e):
 
 
 if __name__ == '__main__':
-    app.run(host="0.0.0.0", port=8080)
+    app.run(host="0.0.0.0", port=80)
