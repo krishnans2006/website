@@ -2,7 +2,7 @@
     "hosting": [
         {
             "site": "projects-a36aa",
-            "public": "public",
+            "public": "redirect",
             "ignore": [
                 "firebase.json",
                 "**/.*",
@@ -17,7 +17,7 @@
         },
         {
             "site": "krishnan",
-            "public": "public",
+            "public": "redirect",
             "ignore": [
                 "firebase.json",
                 "**/.*",
@@ -32,7 +32,7 @@
         },
         {
             "site": "krishnan-shankar",
-            "public": "public",
+            "public": "redirect",
             "ignore": [
                 "firebase.json",
                 "**/.*",
@@ -47,7 +47,7 @@
         },
         {
             "site": "krishnans2006",
-            "public": "public",
+            "public": "redirect",
             "ignore": [
                 "firebase.json",
                 "**/.*",
