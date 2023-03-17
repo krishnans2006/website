@@ -1,7 +1,7 @@
 {
     "hosting": [
         {
-            "site": "projects-a36aa",
+            "site": "2024kshankar",
             "public": "redirect",
             "ignore": [
                 "firebase.json",
@@ -47,6 +47,36 @@
         },
         {
             "site": "krishnans2006",
+            "public": "redirect",
+            "ignore": [
+                "firebase.json",
+                "**/.*",
+                "**/node_modules/**"
+            ],
+            "rewrites": [
+                {
+                    "source": "**",
+                    "destination": "/index.html"
+                }
+            ]
+        },
+        {
+            "site": "projects-a36aa",
+            "public": "redirect",
+            "ignore": [
+                "firebase.json",
+                "**/.*",
+                "**/node_modules/**"
+            ],
+            "rewrites": [
+                {
+                    "source": "**",
+                    "destination": "/index.html"
+                }
+            ]
+        },
+        {
+            "site": "shankar-krishnan",
             "public": "redirect",
             "ignore": [
                 "firebase.json",
