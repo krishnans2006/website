@@ -6,9 +6,24 @@
 </head>
 
 <body>
-    <iframe src="https://user.tjhsst.edu/2024kshankar" style="position:fixed; top:0; left:0; bottom:0; right:0; width:100%; height:100%; border:none; margin:0; padding:0; overflow:hidden; z-index:999999;">
+    <iframe id="page" style="position:fixed; top:0; left:0; bottom:0; right:0; width:100%; height:100%; border:none; margin:0; padding:0; overflow:hidden; z-index:999999;">
         Hi! Krishnan here. Get a better browser please! Your browser doesn't support iframes... what browser are you even using??? Email me at <a href="mailto:krishnans2006@gmail.com">krishnans2006@gmail.com</a> to let me know :)
     </iframe>
+
+    <script type="text/javascript">
+        let iframe = document.getElementById("page");
+        let iframeError;
+
+        iframe.onload = function() {
+            clearTimeout(iframeError);
+        }
+
+        iframeError = setTimeout(function() {
+            iframe.src = "https://website-k1re.onrender.com/";
+        }, 1000);
+
+        iframe.src = "https://user.tjhsst.edu/2024kshankar/"
+    </script>
 </body>
 
 </html>
