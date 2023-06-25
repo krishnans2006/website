@@ -6,6 +6,7 @@ app = Flask(__name__)
 
 
 @app.route("/health")
+@app.route("/2024kshankar/health")
 def health():
     return "OK"
 
