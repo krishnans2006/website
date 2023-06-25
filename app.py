@@ -5,6 +5,11 @@ from data import get_projects
 app = Flask(__name__)
 
 
+@app.route("/health")
+def health():
+    return "OK"
+
+
 @app.route("/")
 @app.route("/2024kshankar/")
 def index():
