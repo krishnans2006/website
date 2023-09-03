@@ -17,20 +17,20 @@ def index():
     return redirect(url_for("portfolio"))
 
 
-@app.route("/linkedin/")
-@app.route("/2024kshankar/linkedin/")
+@app.route("/linkedin")
+@app.route("/2024kshankar/linkedin")
 def linkedin():
     return render_template("linkedin.html")
 
 
-@app.route("/portfolio/")
-@app.route("/2024kshankar/portfolio/")
+@app.route("/portfolio")
+@app.route("/2024kshankar/portfolio")
 def portfolio():
     return render_template("portfolio.html", projects=[[p.to_dict(), p.id] for p in get_projects()], desc="Test!")
 
 
-@app.route("/resume/")
-@app.route("/2024kshankar/resume/")
+@app.route("/resume")
+@app.route("/2024kshankar/resume")
 def resume():
     return send_file("static/resumes/Resume.pdf", download_name="Krishnan_Shankar_Resume.pdf")
 
