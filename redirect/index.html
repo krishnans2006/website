@@ -119,9 +119,7 @@
 
     iframe.onload = function () {
         clearTimeout(iframeError);
-        setTimeout(function () {
-            document.getElementById("loading").style.display = "none";
-        }, 500);
+        document.getElementById("loading").style.display = "none";
     }
 
     iframeError = setTimeout(function () {
