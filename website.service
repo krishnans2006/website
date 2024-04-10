@@ -1,0 +1,16 @@
+[Unit]
+Description=Website
+After=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=/home/ubuntu/web/website
+ExecStartPre=/bin/bash -c 'until host google.com; do sleep 1; done'
+ExecStart=/home/ubuntu/web/website/venv/bin/python -m gunicorn -b 0.0.0.0:5000 --threads 4 app:app
+Restart=on-failure
+RestartSec=60
+User=ubuntu
+Group=ubuntu
+
+[Install]
+WantedBy=multi-user.target
